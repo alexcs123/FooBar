@@ -5,7 +5,7 @@ def answer(dimensions, your_position, guard_position, distance):
     repeats = [int(ceil(distance / dimension)) for dimension in dimensions]
     points = {}
 
-    for position, guard in [(guard_position, True), (your_position, False)]:
+    for position, guard in ((guard_position, True), (your_position, False)):
         for xrepeat in range(-repeats[0], repeats[0] + 2):
             for yrepeat in range(-repeats[1], repeats[1] + 2):
                 x = xrepeat * dimensions[0] - your_position[0] + (position[0] if xrepeat % 2 == 0 else dimensions[0] - position[0])
@@ -26,7 +26,11 @@ def answer(dimensions, your_position, guard_position, distance):
 
 
 if __name__ == '__main__':
-    print('success') if answer([3, 2], [1, 1], [2, 1], 4) == 7 else print('failure')
-    print('success') if answer([2, 5], [1, 2], [1, 4], 11) == 27 else print('failure')
-    print('success') if answer([23, 10], [6, 4], [3, 2], 23) == 8 else print('failure')
-    print('success') if answer([10, 10], [4, 4], [3, 3], 5000) == 739323 else print('failure')
+    tests = ((([3, 2], [1, 1], [2, 1], 4), 7),
+             (([23, 10], [6, 4], [3, 2], 23), 8),
+             (([300, 275], [150, 150], [185, 100], 500), 9),
+             (([2, 5], [1, 2], [1, 4], 11), 27),
+             (([10, 10], [4, 4], [3, 3], 5000), 739323))
+
+    for test, solution in tests:
+        print('pass' if answer(*test) == solution else 'fail')
