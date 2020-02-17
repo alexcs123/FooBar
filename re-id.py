@@ -21,8 +21,5 @@ def solution(n):
 
 
 if __name__ == '__main__':
-    tests = ((0, '23571'),
-             (3, '71113'))
-
-    for test, answer in tests:
-        print('pass' if solution(test) == answer else 'fail')
+    print('pass' if solution(0) == '23571' else 'fail')
+    print('pass' if solution(3) == '71113' else 'fail')

@@ -17,8 +17,5 @@ def solution(total_lambs):
 
 
 if __name__ == '__main__':
-    tests = ((143, 3),
-             (10, 1))
-
-    for test, answer in tests:
-        print('pass' if solution(test) == answer else 'fail')
+    print('pass' if solution(143) == 3 else 'fail')
+    print('pass' if solution(10) == 1 else 'fail')
