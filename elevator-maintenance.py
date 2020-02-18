@@ -1,29 +1,17 @@
-from operator import itemgetter
-
-
 def solution(l):
-    j = []
+    for i, version in enumerate(l):
+        l[i] = [int(part) for part in (version + '.0.0').split('.')]
+        l[i].append(len(version))
 
-    for version in l:
-        broken = (version + '.0.0.0').split('.')
+    for i, version in enumerate(sorted(l, key=lambda x: (x[0], x[1], x[2], x[-1]))):
+        strung = ''
 
-        for part in range(len(broken)):
-            broken[part] = int(broken[part])
+        for number in version[:-3]:
+            strung += str(number) + '.'
 
-        j.append(broken)
+        l[i] = strung[:-1]
 
-    for version in j:
-        version[3] = len(version)
-
-    c = sorted(j, key=itemgetter(0, 1, 2, 3))
-
-    for u, h in enumerate(c):
-        x = ''
-        for z in range(len(h) - 3):
-            x += '.' + str(h[z])
-        c[u] = x[1:]
-
-    return c
+    return l
 
 
 if __name__ == '__main__':
