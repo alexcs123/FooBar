@@ -1,5 +1,29 @@
+from operator import itemgetter
+
+
 def solution(l):
-    return
+    j = []
+
+    for version in l:
+        broken = (version + '.0.0.0').split('.')
+
+        for part in range(len(broken)):
+            broken[part] = int(broken[part])
+
+        j.append(broken)
+
+    for version in j:
+        version[3] = len(version)
+
+    c = sorted(j, key=itemgetter(0, 1, 2, 3))
+
+    for u, h in enumerate(c):
+        x = ''
+        for z in range(len(h) - 3):
+            x += '.' + str(h[z])
+        c[u] = x[1:]
+
+    return c
 
 
 if __name__ == '__main__':
