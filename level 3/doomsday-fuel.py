@@ -87,8 +87,7 @@ def solution(m):
     for chance in chances[1:]:
         denominator = int(denominator * chance.denominator / gcd(denominator, chance.denominator))
 
-    chances = [int(chance.numerator / chance.denominator * denominator) for chance in chances] + [denominator]
-    return chances
+    return [int(chance.numerator / chance.denominator * denominator) for chance in chances] + [denominator]
 
 
 if __name__ == '__main__':
