@@ -10,27 +10,27 @@ def solution(map):
             if map[y][x] == 1:
                 empty = 0
 
-                for step in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-                    empty += 1 if 0 <= x + step[0] < len(map[y]) and 0 <= y + step[1] < len(map) and map[y + step[1]][x + step[0]] == 0 else 0
+                for xstep, ystep in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                    empty += 1 if 0 <= x + xstep < len(map[y]) and 0 <= y + ystep < len(map) and map[y + ystep][x + xstep] == 0 else 0
 
                 changes.append((x, y)) if empty > 1 else None
 
-    for change in changes:
+    for xchange, ychange in changes:
         changed = deepcopy(map)
-        changed[change[1]][change[0]] = 0
+        changed[ychange][xchange] = 0
         steps = 1
         paths, stepped = [(0, 0)], [(0, 0)]
 
         while (len(changed[0]) - 1, len(changed) - 1) not in stepped and steps < shortest:
             add, remove = [], []
 
-            for path in paths:
-                for step in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-                    if (path[0] + step[0], path[1] + step[1]) not in stepped and 0 <= path[0] + step[0] < len(changed[0]) and 0 <= path[1] + step[1] < len(changed) and changed[path[1] + step[1]][path[0] + step[0]] == 0:
-                        stepped.append((path[0] + step[0], path[1] + step[1]))
-                        add.append((path[0] + step[0], path[1] + step[1]))
+            for xpath, ypath in paths:
+                for xstep, ystep in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                    if (xpath + xstep, ypath + ystep) not in stepped and 0 <= xpath + xstep < len(changed[0]) and 0 <= ypath + ystep < len(changed) and changed[ypath + ystep][xpath + xstep] == 0:
+                        stepped.append((xpath + xstep, ypath + ystep))
+                        add.append((xpath + xstep, ypath + ystep))
 
-                remove.append(path)
+                remove.append((xpath, ypath))
 
             paths = [path for path in paths if path not in remove] + add
             steps += 1
