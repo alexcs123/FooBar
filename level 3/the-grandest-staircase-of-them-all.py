@@ -1,6 +1,5 @@
 def solution(n):
-    partitions = [0] * (n + 1)
-    partitions[0], partitions[1] = 1, 1
+    partitions = [1, 1] + [0] * (n - 1)
 
     for i in range(n - 1):
         for j in range(n - 1 - i):
