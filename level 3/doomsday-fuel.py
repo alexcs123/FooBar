@@ -65,7 +65,7 @@ def solution(m):
                 a[j][k] = a[j][k] - a[j][i] * a[i][k]
 
     for c in range(len(b)):
-        x = [Fraction(0, 1) for i in range(len(a))]
+        x = [Fraction(0, 1) for _ in range(len(a))]
 
         for i in range(len(a)):
             x[i] = b[c][p[i]]
