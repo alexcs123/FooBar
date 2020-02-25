@@ -7,8 +7,8 @@ def solution(n):
         prime = True
 
         for divisor in primes:
-            if candidate % divisor == 0:
-                prime = False
+            if divisor ** 2 > candidate or candidate % divisor == 0:
+                prime = True if divisor ** 2 > candidate else False
                 break
 
         if prime:
@@ -23,3 +23,4 @@ def solution(n):
 if __name__ == '__main__':
     print('pass' if solution(0) == '23571' else 'fail')
     print('pass' if solution(3) == '71113' else 'fail')
+
