@@ -2,7 +2,7 @@
 
 This repo contains solutions for a selection of challenges from
 Google's FooBar recruitment project. Solutions are sorted by level,
-and contain the two original test cases given for each challenge.
+and contain the original test cases given for each challenge.
 Solutions that pass both test cases have also passed submission to
 Google (passing all hidden test cases), and with the exception of a
 few snippets, all work is original.
